@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arianna's School Day Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+        }
+        .schedule {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .time-slot {
+            width: 45%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .time-slot:nth-child(1) { background-color: #FFCCCC; } /* Red */
+        .time-slot:nth-child(2) { background-color: #FFCC99; } /* Orange */
+        .time-slot:nth-child(3) { background-color: #FFFF99; } /* Yellow */
+        .time-slot:nth-child(4) { background-color: #CCFFCC; } /* Green */
+        .time-slot:nth-child(5) { background-color: #CCCCFF; } /* Blue */
+        .time-slot:nth-child(6) { background-color: #FFCCFF; } /* Indigo */
+        .time-slot:nth-child(7) { background-color: #CCCCCC; } /* Violet */
+        .separator {
+            width: 100%;
+            border-top: 2px solid #cccccc;
+            margin: 20px 0;
+        }
+        .time-slot:nth-child(8) { background-color: #FFCCCC; } /* Light Red */
+        .time {
+            font-weight: bold;
+        }
+        .tasks {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>👧🏾 Arianna's School Day Schedule 🎒</h1>
+    <div class="schedule">
+        <div class="time-slot">
+            <div class="time">6:30 AM - Morning Routine</div>
+            <div class="tasks">
+                🕰️ Wakeup<br>
+                🪥 Brush Teeth<br>
+                💧 Wash Face<br>
+                👁️ Insert Contacts<br>
+                🌸 Deodorant<br>
+                🧴 Lotion<br>
+                👗 Get Dressed
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">7:30 AM - Leave for School</div>
+            <div class="tasks">
+                🍎 Pickup Breakfast<br>
+                🍗 Protein
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="time-slot">
+            <div class="time">7:00 PM - Night Time Routine (Part 1)</div>
+            <div class="tasks">
+                🚿 Shower<br>💧 Wash Face<br>
+                🛌 Put on PJs
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">7:30 PM - Dinner Time</div>
+            <div class="tasks">
+                🍽️ Eat Dinner<br>
+                🥛 Drink Milk
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">7:45 PM - Free Time</div>
+            <div class="tasks">
+                📚 Homework (If Required)<br>
+                🎮 Game<br>
+                📺 Watch Shows
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">9:15 PM - Night Time Routine (Part 2)</div>
+            <div class="tasks">
+                👚 Pick Clothes<br>
+                👁️ Remove Contacts<br>
+                🪥 Brush Teeth<br>
+                🧘‍♀️ Stretch<br>
+                💊 Vitamins
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">9:45 PM - Lay in Bed</div>
+            <div class="tasks">
+                📚 Read<br>
+                🎧 ASMR<br>
+                💤 Sleep
+            </div>
+        </div>
+    </div>
+</body>
+</html>
