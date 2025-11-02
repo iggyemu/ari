@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ari's PT Workouts 💖</title>
+  <meta name="description" content="A cheerful workout & stretch guide with inline YouTube and daily checkboxes." />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #fff1f7;
+      --bg2: #e8f3ff;
+      --bg3: #f3ffe7;
+      --card: #ffffff;
+      --border: #f1e7f6;
+      --muted: #64748b;
+      --text: #1f2937;
+      --accent: #ff7ac8;
+      --accent-2: #7cafff;
+      --ok: #22c55e;
+      --ring: rgba(255, 122, 200, 0.28);
+      --shadow: 0 10px 30px rgba(124, 175, 255, 0.25), 0 6px 14px rgba(255, 122, 200, 0.18);
+      --radius: 1.25rem;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Fredoka', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at -10% -10%, var(--bg3), transparent 60%),
+                  radial-gradient(1200px 800px at 110% -10%, var(--bg2), transparent 60%),
+                  radial-gradient(1400px 900px at 50% 110%, var(--bg1), transparent 60%),
+                  #fff;
+    }
+    header {
+      padding: 1.25rem 1rem; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .title { font-weight: 800; letter-spacing: .2px; line-height: 1; font-size: clamp(1.5rem, 2vw + 1rem, 2.2rem); background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sub { color: var(--muted); font-size: 1.1rem; font-weight: 500; }
+    .pill {
+      margin-left: auto; display: inline-flex; align-items: center; gap: .5rem; border: 2px solid var(--border); background: #ffffffaa; padding: .55rem .9rem; border-radius: 999px; box-shadow: var(--shadow);
+    }
+    .btn {
+      appearance: none; border: 2px solid var(--border); background: #fff; color: var(--text); padding: .65rem 1rem; border-radius: var(--radius); cursor: pointer; font-weight: 700;
+      transition: transform .06s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+      box-shadow: var(--shadow);
+    }
+    .btn:hover { background: #fff6fb; border-color: #ffd0ec; }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn.primary { border-color: #ffd0ec; background: #fff6fb; box-shadow: 0 0 0 .2rem var(--ring); }
+
+    main, .stretch-list { max-width: 1100px; margin: 0 auto; padding: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+
+    section.stretches { border-top: 2px dashed var(--border); margin-top: 2rem; padding-top: 1.5rem; }
+    section.stretches h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; text-align: center; color: var(--text); }
+
+    .card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column;
+    }
+    .video-wrap { position: relative; aspect-ratio: 16 / 9; background: #000; }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-bottom: 2px solid var(--border); }
+
+    .card-body { padding: 1rem; display: grid; gap: .6rem; }
+    .name { font-weight: 800; font-size: 1.05rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: .5rem .75rem; color: var(--muted); font-size: .92rem; }
+    .badge { border: 2px solid var(--border); background: #fff; padding: .15rem .5rem; border-radius: .75rem; }
+    .instruction { color: #475569; font-size: .95rem; line-height: 1.35; }
+
+    .actions { display: flex; align-items: center; gap: .5rem; }
+    .checkbox { inline-size: 1.25rem; block-size: 1.25rem; border: 3px solid #ff7ac8; border-radius: .45rem; display: inline-grid; place-items: center; cursor: pointer; background: #fff; transition: all 0.2s ease; box-shadow: 0 0 0 2px #ffd0ec66 inset; }
+    .checkbox:hover { border-color: #ff52b4; box-shadow: 0 0 0 3px #ffd0ec99 inset; }
+    .checkbox[data-checked="true"] { background: #ffe7f5; border-color: #ff52b4; box-shadow: 0 0 0 2px #ffd0ec inset; }
+    .checkbox svg { width: .95rem; height: .95rem; opacity: 0; }
+    .checkbox[data-checked="true"] svg { opacity: 1; color: var(--ok); }
+    .done { color: var(--ok); font-weight: 700; font-size: .92rem; }
+
+    footer { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="title">Ari's PT Workouts 💖</div>
+      <div class="sub">Check off what you complete today. Items reset automatically each day.</div>
+    </div>
+    <div class="pill" id="today-pill"></div>
+  </header>
+
+  <section class="toolbar" style="max-width:1100px;margin:0 auto 0.25rem; padding:0 1rem 0;">
+    <button class="btn primary" id="reset-today">Reset today</button>
+    <button class="btn" id="mark-all">Mark all as done</button>
+  </section>
+
+  <main id="list"></main>
+
+  <section class="stretches" id="stretches">
+    <h2>Stretches (as needed) 🌸</h2>
+    <div class="stretch-list"></div>
+  </section>
+
+  <footer>
+    <div><strong>How to add workouts:</strong> Edit the <code>workouts</code> and <code>stretches</code> arrays in the HTML. Paste any YouTube URL; videos embed inline.</div>
+  </footer>
+
+  <script>
+    const workouts = [
+      { name: "Prone Scap Series", video: "https://www.youtube.com/watch?v=HHFdsA-jo-Q", instruction: "Focus on the 'A' — can do off side of bed — focus on the shoulder blade leading the movement — in pocket — away from ear", weight: "0 lbs", reps: "2x/week · 10×10 sec hold" },
+      { name: "Sidelying Shoulder Horizontal Abduction 'T'", video: "https://www.youtube.com/watch?v=P948blFfWyo", instruction: "", weight: "2-3 lbs", reps: "Daily 3x10" },
+      { name: "Sidelying Shoulder Flexion", video: "https://www.youtube.com/watch?v=N5ZOM18Vnno", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
+      { name: "Sidelying Shoulder External Rotation", video: "https://www.youtube.com/watch?v=M6Br5yHZ13g", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
+      { name: "The RIGHT way to Plank", video: "https://www.youtube.com/watch?v=L1qVDbXHfAg", instruction: "", weight: "", reps: "3x a week / 10x10 seconds" },
+      { name: "Serratus Push Up / Scap Push Up / Push Up Plus", video: "https://www.youtube.com/watch?v=vw4PaTDRnBA", instruction: "hands in knees position for now", weight: "", reps: "3x a week / 2x15" },
+      { name: "Chest Press with band", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "Do them slowly; control on the way back.", weight: "10 lbs Bands", reps: "2x a week / 3x10" }
+    ];
+
+    const stretches = [
+      { name: "Teres Major Self-Release", video: "https://www.youtube.com/watch?v=5Y-zILGTu3w", instruction: "Hold for 2 minutes" },
+      { name: "Pec Self Release", video: "https://www.youtube.com/watch?v=iilB9Oy-WHc", instruction: "Hold for 2 minutes" },
+      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "Hold for 2 minutes" },
+      { name: "Pec Stretch", video: "https://www.youtube.com/watch?v=ui02XoM99Ug", instruction: "Hold for 2 minutes", reps: "4x week / 3x45 seconds" }
+    ];
+
+    function extractYouTubeId(url){ try{const u=new URL(url);if(u.hostname.includes('youtu.be'))return u.pathname.slice(1);if(u.searchParams.has('v'))return u.searchParams.get('v');const p=u.pathname.split('/').filter(Boolean);const i=p.findIndex(x=>['embed','shorts','live'].includes(x));if(i!==-1&&p[i+1])return p[i+1];return p.pop();}catch{return url;}}
+    function embedUrl(yid){return `https://www.youtube-nocookie.com/embed/${yid}?rel=0&modestbranding=1&playsinline=1`;}
+
+    const listEl=document.getElementById('list');
+    const stretchList=document.querySelector('.stretch-list');
+    const todayPill=document.getElementById('today-pill');
+
+    const todayKey=()=>{const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+    const storageKey=()=>`workout-completed:${todayKey()}`;
+    function loadCompleted(){try{return new Set(JSON.parse(localStorage.getItem(storageKey())||'[]'));}catch{return new Set();}}
+    function saveCompleted(s){localStorage.setItem(storageKey(),JSON.stringify([...s]));}
+
+    function render(){
+      const completed=loadCompleted();
+      todayPill.textContent=`Today: ${todayKey()} • ${completed.size}/${workouts.length} done`;
+      listEl.innerHTML='';
+      workouts.forEach((w,i)=>{
+        const yid=extractYouTubeId(w.video);
+        const done=completed.has(String(i));
+        const card=document.createElement('article');
+        card.className='card';
+        card.innerHTML=`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${w.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div><div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}<span class='badge'>Reps: ${w.reps}</span></div><div class='instruction'>${w.instruction}</div><div class='actions'><div class='checkbox' data-id='${i}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
+        listEl.appendChild(card);
+      });
+      listEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${workouts.length} done`;}));
+
+      stretchList.innerHTML='';
+      stretches.forEach(s=>{
+        const yid=extractYouTubeId(s.video);
+        const card=document.createElement('article');
+        card.className='card';
+        card.innerHTML=`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${s.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div><div class='card-body'><div class='name'>${s.name}</div>${s.reps?`<div class='meta'><span class='badge'>Reps: ${s.reps}</span></div>`:''}<div class='instruction'>${s.instruction}</div></div>`;
+        stretchList.appendChild(card);
+      });
+    }
+
+    document.getElementById('reset-today').onclick=()=>{localStorage.removeItem(storageKey());render();};
+    document.getElementById('mark-all').onclick=()=>{const s=new Set(workouts.map((_,i)=>String(i)));saveCompleted(s);render();};
+
+    render();
+  </script>
+</body>
+</html>
