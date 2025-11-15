@@ -50,10 +50,9 @@
     .btn:active { transform: translateY(1px) scale(.99); }
     .btn.primary { border-color: #ffd0ec; background: #fff6fb; box-shadow: 0 0 0 .2rem var(--ring); }
 
-    main, .stretch-list { max-width: 1100px; margin: 0 auto; padding: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
-
-    section.stretches { border-top: 2px dashed var(--border); margin-top: 2rem; padding-top: 1.5rem; }
-    section.stretches h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; text-align: center; color: var(--text); }
+    .workout-section { max-width: 1100px; margin: 0 auto; padding: 0 1rem 2rem; }
+    .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; padding-top: 1rem; color: var(--text); text-align: center; }
+    .workout-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
 
     .card {
       background: var(--card);
@@ -80,7 +79,7 @@
     .checkbox[data-checked="true"] svg { opacity: 1; color: var(--ok); }
     .done { color: var(--ok); font-weight: 700; font-size: .92rem; }
 
-    footer { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; color: var(--muted); }
+    footer { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; color: var(--muted); text-align: center; }
   </style>
 </head>
 <body>
@@ -97,40 +96,40 @@
     <button class="btn" id="mark-all">Mark all as done</button>
   </section>
 
-  <main id="list"></main>
+  <section class="workout-section">
+    <h2 class="section-title">🔥 Warm Up</h2>
+    <div class="workout-grid" id="warmup-list"></div>
+  </section>
 
-  <section class="stretches" id="stretches">
-    <h2>Stretches (as needed) 🌸</h2>
-    <div class="stretch-list"></div>
+  <section class="workout-section">
+    <h2 class="section-title">💪 Exercises</h2>
+    <div class="workout-grid" id="exercises-list"></div>
   </section>
 
   <footer>
-    <div><strong>How to add workouts:</strong> Edit the <code>workouts</code> and <code>stretches</code> arrays in the HTML. Paste any YouTube URL; videos embed inline.</div>
+    <div>© Marray Consulting & Movement Driven LLC</div>
   </footer>
 
   <script>
-    const workouts = [
-      { name: "Prone Scap Series", video: "https://www.youtube.com/watch?v=HHFdsA-jo-Q", instruction: "Focus on the 'A' — can do off side of bed — focus on the shoulder blade leading the movement — in pocket — away from ear", weight: "0 lbs", reps: "2x/week · 10×10 sec hold" },
-      { name: "Sidelying Shoulder Horizontal Abduction 'T'", video: "https://www.youtube.com/watch?v=P948blFfWyo", instruction: "", weight: "2-3 lbs", reps: "Daily 3x10" },
-      { name: "Sidelying Shoulder Flexion", video: "https://www.youtube.com/watch?v=N5ZOM18Vnno", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
-      { name: "Sidelying Shoulder External Rotation", video: "https://www.youtube.com/watch?v=M6Br5yHZ13g", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
-      { name: "The RIGHT way to Plank", video: "https://www.youtube.com/watch?v=L1qVDbXHfAg", instruction: "", weight: "", reps: "3x a week / 10x10 seconds" },
-      { name: "Serratus Push Up / Scap Push Up / Push Up Plus", video: "https://www.youtube.com/watch?v=vw4PaTDRnBA", instruction: "hands in knees position for now", weight: "", reps: "3x a week / 2x15" },
-      { name: "Chest Press with band", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "Do them slowly; control on the way back.", weight: "10 lbs Bands", reps: "2x a week / 3x10" }
+    const warmup = [
+      { name: "Teres Major Self-Release", video: "https://www.youtube.com/watch?v=5Y-zILGTu3w", instruction: "", weight: "", reps: "Hold for 2 mins" },
+      { name: "Lat Self-Release", video: "https://www.youtube.com/watch?v=w-lbAS5Q6DA", instruction: "Use a foam roller.", weight: "", reps: "Hold for 2 mins" },
+      { name: "Pec Self-Release", video: "https://www.youtube.com/watch?v=iilB9Oy-WHc", instruction: "", weight: "", reps: "Hold for 2 mins" },
+      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "", weight: "", reps: "Hold for 2 mins" }
     ];
 
-    const stretches = [
-      { name: "Teres Major Self-Release", video: "https://www.youtube.com/watch?v=5Y-zILGTu3w", instruction: "Hold for 2 minutes" },
-      { name: "Pec Self Release", video: "https://www.youtube.com/watch?v=iilB9Oy-WHc", instruction: "Hold for 2 minutes" },
-      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "Hold for 2 minutes" },
-      { name: "Pec Stretch", video: "https://www.youtube.com/watch?v=ui02XoM99Ug", instruction: "Hold for 2 minutes", reps: "4x week / 3x45 seconds" }
+    const exercises = [
+      { name: "Sidelying Shoulder External Rotation", video: "https://www.youtube.com/watch?v=M6Br5yHZ13g", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
+      { name: "Chest Press with band", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "Do them slowly; control on the way back.", weight: "10 lbs Bands", reps: "2x a week / 3x10" },
+      { name: "ER Chest Press", video: "https://www.youtube.com/watch?v=BR3dSHbZwNI", instruction: "Slowly!", weight: "Light Resistance Band", reps: "3x / week; 3x10" },
+      { name: "Dead Bug", video: "https://www.youtube.com/watch?v=aCt35joy0qY", instruction: "Squeeze ball between legs; arms out like a T; keep lower back flat to ground.", weight: "", reps: "3x / week; 5 x 60 second hold" }
     ];
 
     function extractYouTubeId(url){ try{const u=new URL(url);if(u.hostname.includes('youtu.be'))return u.pathname.slice(1);if(u.searchParams.has('v'))return u.searchParams.get('v');const p=u.pathname.split('/').filter(Boolean);const i=p.findIndex(x=>['embed','shorts','live'].includes(x));if(i!==-1&&p[i+1])return p[i+1];return p.pop();}catch{return url;}}
     function embedUrl(yid){return `https://www.youtube-nocookie.com/embed/${yid}?rel=0&modestbranding=1&playsinline=1`;}
 
-    const listEl=document.getElementById('list');
-    const stretchList=document.querySelector('.stretch-list');
+    const warmupListEl=document.getElementById('warmup-list');
+    const exercisesListEl=document.getElementById('exercises-list');
     const todayPill=document.getElementById('today-pill');
 
     const todayKey=()=>{const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
@@ -138,32 +137,31 @@
     function loadCompleted(){try{return new Set(JSON.parse(localStorage.getItem(storageKey())||'[]'));}catch{return new Set();}}
     function saveCompleted(s){localStorage.setItem(storageKey(),JSON.stringify([...s]));}
 
+    function renderSection(items, containerEl, startIndex){
+      const completed=loadCompleted();
+      containerEl.innerHTML='';
+      items.forEach((w,i)=>{
+        const globalIndex=startIndex+i;
+        const yid=extractYouTubeId(w.video);
+        const done=completed.has(String(globalIndex));
+        const card=document.createElement('article');
+        card.className='card';
+        card.innerHTML=`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${w.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div><div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}<span class='badge'>Reps: ${w.reps}</span></div><div class='instruction'>${w.instruction}</div><div class='actions'><div class='checkbox' data-id='${globalIndex}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
+        containerEl.appendChild(card);
+      });
+      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=warmup.length+exercises.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
+    }
+
     function render(){
       const completed=loadCompleted();
-      todayPill.textContent=`Today: ${todayKey()} • ${completed.size}/${workouts.length} done`;
-      listEl.innerHTML='';
-      workouts.forEach((w,i)=>{
-        const yid=extractYouTubeId(w.video);
-        const done=completed.has(String(i));
-        const card=document.createElement('article');
-        card.className='card';
-        card.innerHTML=`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${w.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div><div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}<span class='badge'>Reps: ${w.reps}</span></div><div class='instruction'>${w.instruction}</div><div class='actions'><div class='checkbox' data-id='${i}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
-        listEl.appendChild(card);
-      });
-      listEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${workouts.length} done`;}));
-
-      stretchList.innerHTML='';
-      stretches.forEach(s=>{
-        const yid=extractYouTubeId(s.video);
-        const card=document.createElement('article');
-        card.className='card';
-        card.innerHTML=`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${s.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div><div class='card-body'><div class='name'>${s.name}</div>${s.reps?`<div class='meta'><span class='badge'>Reps: ${s.reps}</span></div>`:''}<div class='instruction'>${s.instruction}</div></div>`;
-        stretchList.appendChild(card);
-      });
+      const totalItems=warmup.length+exercises.length;
+      todayPill.textContent=`Today: ${todayKey()} • ${completed.size}/${totalItems} done`;
+      renderSection(warmup, warmupListEl, 0);
+      renderSection(exercises, exercisesListEl, warmup.length);
     }
 
     document.getElementById('reset-today').onclick=()=>{localStorage.removeItem(storageKey());render();};
-    document.getElementById('mark-all').onclick=()=>{const s=new Set(workouts.map((_,i)=>String(i)));saveCompleted(s);render();};
+    document.getElementById('mark-all').onclick=()=>{const totalItems=warmup.length+exercises.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
 
     render();
   </script>
