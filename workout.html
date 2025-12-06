@@ -97,6 +97,11 @@
   </section>
 
   <section class="workout-section">
+    <h2 class="section-title">🎉 Fun Stuff</h2>
+    <div class="workout-grid" id="funstuff-list"></div>
+  </section>
+
+  <section class="workout-section">
     <h2 class="section-title">🔥 Warm Up</h2>
     <div class="workout-grid" id="warmup-list"></div>
   </section>
@@ -111,23 +116,33 @@
   </footer>
 
   <script>
+    const funStuff = [
+      { name: "Play Wrestle", video: "", instruction: "Get on the floor and have her try to push you over - gets her to engage her core and learn how to use her body together more!", weight: "", reps: "" },
+      { name: "Tug of War", video: "", instruction: "Use a resistance band.", weight: "", reps: "" }
+    ];
+
     const warmup = [
       { name: "Teres Major Self-Release", video: "https://www.youtube.com/watch?v=5Y-zILGTu3w", instruction: "", weight: "", reps: "Hold for 2 mins" },
       { name: "Lat Self-Release", video: "https://www.youtube.com/watch?v=w-lbAS5Q6DA", instruction: "Use a foam roller.", weight: "", reps: "Hold for 2 mins" },
       { name: "Pec Self-Release", video: "https://www.youtube.com/watch?v=iilB9Oy-WHc", instruction: "", weight: "", reps: "Hold for 2 mins" },
-      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "", weight: "", reps: "Hold for 2 mins" }
+      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "", weight: "", reps: "Hold for 2 mins" },
+      { name: "Wall Sit", video: "", instruction: "Knees and hips at 90 degrees.", weight: "", reps: "5x30 sec hold 3x/week" }
     ];
 
     const exercises = [
       { name: "Sidelying Shoulder External Rotation", video: "https://www.youtube.com/watch?v=M6Br5yHZ13g", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
       { name: "Chest Press with band", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "Do them slowly; control on the way back.", weight: "10 lbs Bands", reps: "2x a week / 3x10" },
+      { name: "Chest Press Band - MVMT DRVN", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "", weight: "", reps: "3x10 3x/week" },
       { name: "ER Chest Press", video: "https://www.youtube.com/watch?v=BR3dSHbZwNI", instruction: "Slowly!", weight: "Light Resistance Band", reps: "3x / week; 3x10" },
+      { name: "Row with External Rotator Cuff Activation", video: "https://www.youtube.com/watch?v=uUZQc9-Sxnw", instruction: "Without band around wrist for now.", weight: "", reps: "3x10 3x/week" },
+      { name: "Bird Dog", video: "https://www.youtube.com/watch?v=dSXPlpLQPUE", instruction: "", weight: "", reps: "2x10x10 sec holds 4x/week" },
       { name: "Dead Bug", video: "https://www.youtube.com/watch?v=aCt35joy0qY", instruction: "Squeeze ball between legs; arms out like a T; keep lower back flat to ground.", weight: "", reps: "3x / week; 5 x 60 second hold" }
     ];
 
     function extractYouTubeId(url){ try{const u=new URL(url);if(u.hostname.includes('youtu.be'))return u.pathname.slice(1);if(u.searchParams.has('v'))return u.searchParams.get('v');const p=u.pathname.split('/').filter(Boolean);const i=p.findIndex(x=>['embed','shorts','live'].includes(x));if(i!==-1&&p[i+1])return p[i+1];return p.pop();}catch{return url;}}
     function embedUrl(yid){return `https://www.youtube-nocookie.com/embed/${yid}?rel=0&modestbranding=1&playsinline=1`;}
 
+    const funStuffListEl=document.getElementById('funstuff-list');
     const warmupListEl=document.getElementById('warmup-list');
     const exercisesListEl=document.getElementById('exercises-list');
     const todayPill=document.getElementById('today-pill');
@@ -142,26 +157,28 @@
       containerEl.innerHTML='';
       items.forEach((w,i)=>{
         const globalIndex=startIndex+i;
-        const yid=extractYouTubeId(w.video);
+        const yid=w.video?extractYouTubeId(w.video):'';
         const done=completed.has(String(globalIndex));
         const card=document.createElement('article');
         card.className='card';
-        card.innerHTML=`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${w.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div><div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}<span class='badge'>Reps: ${w.reps}</span></div><div class='instruction'>${w.instruction}</div><div class='actions'><div class='checkbox' data-id='${globalIndex}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
+        const videoHtml=w.video?`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${w.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div>`:'';
+        card.innerHTML=`${videoHtml}<div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}${w.reps?`<span class='badge'>Reps: ${w.reps}</span>`:''}</div>${w.instruction?`<div class='instruction'>${w.instruction}</div>`:''}<div class='actions'><div class='checkbox' data-id='${globalIndex}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
         containerEl.appendChild(card);
       });
-      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=warmup.length+exercises.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
+      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=funStuff.length+warmup.length+exercises.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
     }
 
     function render(){
       const completed=loadCompleted();
-      const totalItems=warmup.length+exercises.length;
+      const totalItems=funStuff.length+warmup.length+exercises.length;
       todayPill.textContent=`Today: ${todayKey()} • ${completed.size}/${totalItems} done`;
-      renderSection(warmup, warmupListEl, 0);
-      renderSection(exercises, exercisesListEl, warmup.length);
+      renderSection(funStuff, funStuffListEl, 0);
+      renderSection(warmup, warmupListEl, funStuff.length);
+      renderSection(exercises, exercisesListEl, funStuff.length+warmup.length);
     }
 
     document.getElementById('reset-today').onclick=()=>{localStorage.removeItem(storageKey());render();};
-    document.getElementById('mark-all').onclick=()=>{const totalItems=warmup.length+exercises.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
+    document.getElementById('mark-all').onclick=()=>{const totalItems=funStuff.length+warmup.length+exercises.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
 
     render();
   </script>
