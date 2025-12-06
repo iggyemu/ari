@@ -1,186 +1,124 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ari's PT Workouts 💖</title>
-  <meta name="description" content="A cheerful workout & stretch guide with inline YouTube and daily checkboxes." />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg1: #fff1f7;
-      --bg2: #e8f3ff;
-      --bg3: #f3ffe7;
-      --card: #ffffff;
-      --border: #f1e7f6;
-      --muted: #64748b;
-      --text: #1f2937;
-      --accent: #ff7ac8;
-      --accent-2: #7cafff;
-      --ok: #22c55e;
-      --ring: rgba(255, 122, 200, 0.28);
-      --shadow: 0 10px 30px rgba(124, 175, 255, 0.25), 0 6px 14px rgba(255, 122, 200, 0.18);
-      --radius: 1.25rem;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: 'Fredoka', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--text);
-      background: radial-gradient(1200px 800px at -10% -10%, var(--bg3), transparent 60%),
-                  radial-gradient(1200px 800px at 110% -10%, var(--bg2), transparent 60%),
-                  radial-gradient(1400px 900px at 50% 110%, var(--bg1), transparent 60%),
-                  #fff;
-    }
-    header {
-      padding: 1.25rem 1rem; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-    }
-    .title { font-weight: 800; letter-spacing: .2px; line-height: 1; font-size: clamp(1.5rem, 2vw + 1rem, 2.2rem); background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .sub { color: var(--muted); font-size: 1.1rem; font-weight: 500; }
-    .pill {
-      margin-left: auto; display: inline-flex; align-items: center; gap: .5rem; border: 2px solid var(--border); background: #ffffffaa; padding: .55rem .9rem; border-radius: 999px; box-shadow: var(--shadow);
-    }
-    .btn {
-      appearance: none; border: 2px solid var(--border); background: #fff; color: var(--text); padding: .65rem 1rem; border-radius: var(--radius); cursor: pointer; font-weight: 700;
-      transition: transform .06s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
-      box-shadow: var(--shadow);
-    }
-    .btn:hover { background: #fff6fb; border-color: #ffd0ec; }
-    .btn:active { transform: translateY(1px) scale(.99); }
-    .btn.primary { border-color: #ffd0ec; background: #fff6fb; box-shadow: 0 0 0 .2rem var(--ring); }
-
-    .workout-section { max-width: 1100px; margin: 0 auto; padding: 0 1rem 2rem; }
-    .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; padding-top: 1rem; color: var(--text); text-align: center; }
-    .workout-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
-
-    .card {
-      background: var(--card);
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      display: flex; flex-direction: column;
-    }
-    .video-wrap { position: relative; aspect-ratio: 16 / 9; background: #000; }
-    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-bottom: 2px solid var(--border); }
-
-    .card-body { padding: 1rem; display: grid; gap: .6rem; }
-    .name { font-weight: 800; font-size: 1.05rem; }
-    .meta { display: flex; flex-wrap: wrap; gap: .5rem .75rem; color: var(--muted); font-size: .92rem; }
-    .badge { border: 2px solid var(--border); background: #fff; padding: .15rem .5rem; border-radius: .75rem; }
-    .instruction { color: #475569; font-size: .95rem; line-height: 1.35; }
-
-    .actions { display: flex; align-items: center; gap: .5rem; }
-    .checkbox { inline-size: 1.25rem; block-size: 1.25rem; border: 3px solid #ff7ac8; border-radius: .45rem; display: inline-grid; place-items: center; cursor: pointer; background: #fff; transition: all 0.2s ease; box-shadow: 0 0 0 2px #ffd0ec66 inset; }
-    .checkbox:hover { border-color: #ff52b4; box-shadow: 0 0 0 3px #ffd0ec99 inset; }
-    .checkbox[data-checked="true"] { background: #ffe7f5; border-color: #ff52b4; box-shadow: 0 0 0 2px #ffd0ec inset; }
-    .checkbox svg { width: .95rem; height: .95rem; opacity: 0; }
-    .checkbox[data-checked="true"] svg { opacity: 1; color: var(--ok); }
-    .done { color: var(--ok); font-weight: 700; font-size: .92rem; }
-
-    footer { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; color: var(--muted); text-align: center; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arianna's School Day Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+        }
+        .schedule {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .time-slot {
+            width: 45%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .time-slot:nth-child(1) { background-color: #FFCCCC; } /* Red */
+        .time-slot:nth-child(2) { background-color: #FFCC99; } /* Orange */
+        .time-slot:nth-child(3) { background-color: #FFFF99; } /* Yellow */
+        .time-slot:nth-child(4) { background-color: #CCFFCC; } /* Green */
+        .time-slot:nth-child(5) { background-color: #CCCCFF; } /* Blue */
+        .time-slot:nth-child(6) { background-color: #FFCCFF; } /* Indigo */
+        .time-slot:nth-child(7) { background-color: #CCCCCC; } /* Violet */
+        .separator {
+            width: 100%;
+            border-top: 2px solid #cccccc;
+            margin: 20px 0;
+        }
+        .time-slot:nth-child(8) { background-color: #FFCCCC; } /* Light Red */
+        .time {
+            font-weight: bold;
+        }
+        .tasks {
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div>
-      <div class="title">Ari's PT Workouts 💖</div>
-      <div class="sub">Check off what you complete today. Items reset automatically each day.</div>
+    <h1>👧🏾 Arianna's School Day Schedule 🎒</h1>
+    <div class="schedule">
+        <div class="time-slot">
+            <div class="time">6:30 AM - Morning Routine</div>
+            <div class="tasks">
+                🕰️ Wakeup<br>
+                🪥 Brush Teeth<br>
+                💧 Wash Face<br>
+                👁️ Insert Contacts<br>
+                🌸 Deodorant<br>
+                🧴 Lotion<br>
+                👗 Get Dressed
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">7:30 AM - Leave for School</div>
+            <div class="tasks">
+                🍎 Pickup Breakfast<br>
+                🍗 Protein
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="time-slot">
+            <div class="time">7:00 PM - Night Time Routine (Part 1)</div>
+            <div class="tasks">
+                🚿 Shower<br>💧 Wash Face<br>
+                🛌 Put on PJs
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">7:30 PM - Dinner Time</div>
+            <div class="tasks">
+                🍽️ Eat Dinner<br>
+                🥛 Drink Milk
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">7:45 PM - Free Time</div>
+            <div class="tasks">
+                📚 Homework (If Required)<br>
+                🎮 Game<br>
+                📺 Watch Shows
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">9:15 PM - Night Time Routine (Part 2)</div>
+            <div class="tasks">
+                👚 Pick Clothes<br>
+                👁️ Remove Contacts<br>
+                🪥 Brush Teeth<br>
+                🧘‍♀️ Stretch<br>
+                💊 Vitamins
+            </div>
+        </div>
+        <div class="time-slot">
+            <div class="time">9:45 PM - Lay in Bed</div>
+            <div class="tasks">
+                📚 Read<br>
+                🎧 ASMR<br>
+                💤 Sleep
+            </div>
+        </div>
     </div>
-    <div class="pill" id="today-pill"></div>
-  </header>
-
-  <section class="toolbar" style="max-width:1100px;margin:0 auto 0.25rem; padding:0 1rem 0;">
-    <button class="btn primary" id="reset-today">Reset today</button>
-    <button class="btn" id="mark-all">Mark all as done</button>
-  </section>
-
-  <section class="workout-section">
-    <h2 class="section-title">🎉 Fun Stuff</h2>
-    <div class="workout-grid" id="funstuff-list"></div>
-  </section>
-
-  <section class="workout-section">
-    <h2 class="section-title">🔥 Warm Up</h2>
-    <div class="workout-grid" id="warmup-list"></div>
-  </section>
-
-  <section class="workout-section">
-    <h2 class="section-title">💪 Exercises</h2>
-    <div class="workout-grid" id="exercises-list"></div>
-  </section>
-
-  <footer>
-    <div>© Marray Consulting & Movement Driven LLC</div>
-  </footer>
-
-  <script>
-    const funStuff = [
-      { name: "Play Wrestle", video: "", instruction: "Get on the floor and have her try to push you over - gets her to engage her core and learn how to use her body together more!", weight: "", reps: "" },
-      { name: "Tug of War", video: "", instruction: "Use a resistance band.", weight: "", reps: "" }
-    ];
-
-    const warmup = [
-      { name: "Teres Major Self-Release", video: "https://www.youtube.com/watch?v=5Y-zILGTu3w", instruction: "", weight: "", reps: "Hold for 2 mins" },
-      { name: "Lat Self-Release", video: "https://www.youtube.com/watch?v=w-lbAS5Q6DA", instruction: "Use a foam roller.", weight: "", reps: "Hold for 2 mins" },
-      { name: "Pec Self-Release", video: "https://www.youtube.com/watch?v=iilB9Oy-WHc", instruction: "", weight: "", reps: "Hold for 2 mins" },
-      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "", weight: "", reps: "Hold for 2 mins" },
-      { name: "Wall Sit", video: "", instruction: "Knees and hips at 90 degrees.", weight: "", reps: "5x30 sec hold 3x/week" }
-    ];
-
-    const exercises = [
-      { name: "Sidelying Shoulder External Rotation", video: "https://www.youtube.com/watch?v=M6Br5yHZ13g", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
-      { name: "Chest Press with band", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "Do them slowly; control on the way back.", weight: "10 lbs Bands", reps: "2x a week / 3x10" },
-      { name: "Chest Press Band - MVMT DRVN", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "", weight: "", reps: "3x10 3x/week" },
-      { name: "ER Chest Press", video: "https://www.youtube.com/watch?v=BR3dSHbZwNI", instruction: "Slowly!", weight: "Light Resistance Band", reps: "3x / week; 3x10" },
-      { name: "Row with External Rotator Cuff Activation", video: "https://www.youtube.com/watch?v=uUZQc9-Sxnw", instruction: "Without band around wrist for now.", weight: "", reps: "3x10 3x/week" },
-      { name: "Bird Dog", video: "https://www.youtube.com/watch?v=dSXPlpLQPUE", instruction: "", weight: "", reps: "2x10x10 sec holds 4x/week" },
-      { name: "Dead Bug", video: "https://www.youtube.com/watch?v=aCt35joy0qY", instruction: "Squeeze ball between legs; arms out like a T; keep lower back flat to ground.", weight: "", reps: "3x / week; 5 x 60 second hold" }
-    ];
-
-    function extractYouTubeId(url){ try{const u=new URL(url);if(u.hostname.includes('youtu.be'))return u.pathname.slice(1);if(u.searchParams.has('v'))return u.searchParams.get('v');const p=u.pathname.split('/').filter(Boolean);const i=p.findIndex(x=>['embed','shorts','live'].includes(x));if(i!==-1&&p[i+1])return p[i+1];return p.pop();}catch{return url;}}
-    function embedUrl(yid){return `https://www.youtube-nocookie.com/embed/${yid}?rel=0&modestbranding=1&playsinline=1`;}
-
-    const funStuffListEl=document.getElementById('funstuff-list');
-    const warmupListEl=document.getElementById('warmup-list');
-    const exercisesListEl=document.getElementById('exercises-list');
-    const todayPill=document.getElementById('today-pill');
-
-    const todayKey=()=>{const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
-    const storageKey=()=>`workout-completed:${todayKey()}`;
-    function loadCompleted(){try{return new Set(JSON.parse(localStorage.getItem(storageKey())||'[]'));}catch{return new Set();}}
-    function saveCompleted(s){localStorage.setItem(storageKey(),JSON.stringify([...s]));}
-
-    function renderSection(items, containerEl, startIndex){
-      const completed=loadCompleted();
-      containerEl.innerHTML='';
-      items.forEach((w,i)=>{
-        const globalIndex=startIndex+i;
-        const yid=w.video?extractYouTubeId(w.video):'';
-        const done=completed.has(String(globalIndex));
-        const card=document.createElement('article');
-        card.className='card';
-        const videoHtml=w.video?`<div class='video-wrap'><iframe src='${embedUrl(yid)}' title='${w.name}' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen referrerpolicy='origin-when-cross-origin'></iframe></div>`:'';
-        card.innerHTML=`${videoHtml}<div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}${w.reps?`<span class='badge'>Reps: ${w.reps}</span>`:''}</div>${w.instruction?`<div class='instruction'>${w.instruction}</div>`:''}<div class='actions'><div class='checkbox' data-id='${globalIndex}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
-        containerEl.appendChild(card);
-      });
-      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=funStuff.length+warmup.length+exercises.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
-    }
-
-    function render(){
-      const completed=loadCompleted();
-      const totalItems=funStuff.length+warmup.length+exercises.length;
-      todayPill.textContent=`Today: ${todayKey()} • ${completed.size}/${totalItems} done`;
-      renderSection(funStuff, funStuffListEl, 0);
-      renderSection(warmup, warmupListEl, funStuff.length);
-      renderSection(exercises, exercisesListEl, funStuff.length+warmup.length);
-    }
-
-    document.getElementById('reset-today').onclick=()=>{localStorage.removeItem(storageKey());render();};
-    document.getElementById('mark-all').onclick=()=>{const totalItems=funStuff.length+warmup.length+exercises.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
-
-    render();
-  </script>
 </body>
 </html>
