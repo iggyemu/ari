@@ -97,18 +97,18 @@
   </section>
 
   <section class="workout-section">
-    <h2 class="section-title">🎉 Fun Stuff</h2>
-    <div class="workout-grid" id="funstuff-list"></div>
+    <h2 class="section-title">💪 Tier 1 Priority</h2>
+    <div class="workout-grid" id="tier1-list"></div>
   </section>
 
   <section class="workout-section">
-    <h2 class="section-title">🔥 Warm Up</h2>
-    <div class="workout-grid" id="warmup-list"></div>
+    <h2 class="section-title">🔥 Tier 2</h2>
+    <div class="workout-grid" id="tier2-list"></div>
   </section>
 
   <section class="workout-section">
-    <h2 class="section-title">💪 Exercises</h2>
-    <div class="workout-grid" id="exercises-list"></div>
+    <h2 class="section-title">🌟 Tier 3</h2>
+    <div class="workout-grid" id="tier3-list"></div>
   </section>
 
   <footer>
@@ -116,34 +116,45 @@
   </footer>
 
   <script>
-    const funStuff = [
-      { name: "Play Wrestle", video: "", instruction: "Get on the floor and have her try to push you over - gets her to engage her core and learn how to use her body together more!", weight: "", reps: "" },
-      { name: "Tug of War", video: "", instruction: "Use a resistance band.", weight: "", reps: "" }
+    const tier1 = [
+      { name: "Star Drill", video: "https://www.youtube.com/watch?v=Z0HOjuh8UpU", instruction: "Lateral only.", weight: "", reps: "3x10 each side" },
+      { name: "Paloff Press Squat and Lunge Positions", video: "https://www.youtube.com/watch?v=HkDj3qSmO4Y", instruction: "Squat position - facing both directions!", weight: "", reps: "2x10x5 sec" },
+      { name: "Lateral Step Down", video: "https://www.youtube.com/watch?v=jMh-ou8tHxM", instruction: "", weight: "", reps: "3x10" },
+      { name: "Bird Dog", video: "https://www.youtube.com/watch?v=dSXPlpLQPUE&t=1s", instruction: "", weight: "", reps: "2x10x10 sec holds" },
+      { name: "Dead Bug", video: "https://www.youtube.com/watch?v=aCt35joy0qY", instruction: "Squeeze ball between knees.", weight: "", reps: "5x60 sec hold" },
+      { name: "Shoulder Internal Rotation", video: "https://www.youtube.com/watch?v=qgfQfGGhk-4", instruction: "Heavier resistance than External Rotation.", weight: "", reps: "2x8x5 sec hold" },
+      { name: "Bear Crawl", video: "https://www.youtube.com/watch?v=gQEZXKIyvus", instruction: "Forward, backward about 25 ft.", weight: "", reps: "3 rounds" },
+      { name: "Wall Sit", video: "", instruction: "Knees and hips at 90 degrees.", weight: "", reps: "5x30 sec hold" },
+      { name: "Row with External Rotator Cuff Activation", video: "https://www.youtube.com/watch?v=uUZQc9-Sxnw", instruction: "Without band around wrist for now.", weight: "", reps: "3x10" },
+      { name: "ER Chest Press", video: "https://www.youtube.com/watch?v=BR3dSHbZwNI", instruction: "Slow!", weight: "Light resistance band", reps: "3x10" }
     ];
 
-    const warmup = [
-      { name: "Teres Major Self-Release", video: "https://www.youtube.com/watch?v=5Y-zILGTu3w", instruction: "", weight: "", reps: "Hold for 2 mins" },
-      { name: "Lat Self-Release", video: "https://www.youtube.com/watch?v=w-lbAS5Q6DA", instruction: "Use a foam roller.", weight: "", reps: "Hold for 2 mins" },
-      { name: "Pec Self-Release", video: "https://www.youtube.com/watch?v=iilB9Oy-WHc", instruction: "", weight: "", reps: "Hold for 2 mins" },
-      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "", weight: "", reps: "Hold for 2 mins" },
-      { name: "Wall Sit", video: "", instruction: "Knees and hips at 90 degrees.", weight: "", reps: "5x30 sec hold 3x/week" }
+    const tier2 = [
+      { name: "Chest Press Band", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "", weight: "", reps: "3x10" },
+      { name: "Dynamic Hug (Serratus Punch)", video: "https://www.youtube.com/watch?v=_3D5VjVcBVQ", instruction: "", weight: "", reps: "2x8x5 sec hold" },
+      { name: "Sidelying Shoulder Horizontal Abduction 'T'", video: "https://www.youtube.com/watch?v=P948blFfWyo", instruction: "", weight: "2-3 lbs", reps: "3x10" },
+      { name: "Sidelying Shoulder Flexion", video: "https://www.youtube.com/watch?v=N5ZOM18Vnno", instruction: "", weight: "2 lbs", reps: "3x10" },
+      { name: "Sidelying Shoulder External Rotation", video: "https://www.youtube.com/watch?v=M6Br5yHZ13g", instruction: "", weight: "2 lbs", reps: "3x10" },
+      { name: "The RIGHT way to Plank", video: "https://www.youtube.com/watch?v=L1qVDbXHfAg", instruction: "", weight: "", reps: "10x10 seconds" },
+      { name: "Serratus Push Up / Scap Push Up / Push Up Plus", video: "https://www.youtube.com/watch?v=vw4PaTDRnBA", instruction: "Hands in knees position for now.", weight: "", reps: "2x15" },
+      { name: "Straight Row (\"A\")", video: "https://www.youtube.com/watch?v=aldspbtdXL8", instruction: "", weight: "", reps: "2x8x5 sec hold" }
     ];
 
-    const exercises = [
-      { name: "Sidelying Shoulder External Rotation", video: "https://www.youtube.com/watch?v=M6Br5yHZ13g", instruction: "", weight: "2 lbs", reps: "Daily 3x10" },
-      { name: "Chest Press with band", video: "https://www.youtube.com/watch?v=uZQQF__dIpE", instruction: "Do them slowly; control on the way back.", weight: "10 lbs Bands", reps: "2x a week / 3x10" },
-      { name: "ER Chest Press", video: "https://www.youtube.com/watch?v=BR3dSHbZwNI", instruction: "Slowly!", weight: "Light Resistance Band", reps: "3x / week; 3x10" },
-      { name: "Row with External Rotator Cuff Activation", video: "https://www.youtube.com/watch?v=uUZQc9-Sxnw", instruction: "Without band around wrist for now.", weight: "", reps: "3x10 3x/week" },
-      { name: "Bird Dog", video: "https://www.youtube.com/watch?v=dSXPlpLQPUE", instruction: "", weight: "", reps: "2x10x10 sec holds 4x/week" },
-      { name: "Dead Bug", video: "https://www.youtube.com/watch?v=aCt35joy0qY", instruction: "Squeeze ball between legs; arms out like a T; keep lower back flat to ground.", weight: "", reps: "3x / week; 5 x 60 second hold" }
+    const tier3 = [
+      { name: "Teres Major Self-Release", video: "https://www.youtube.com/watch?v=5Y-zILGTu3w", instruction: "As needed.", weight: "", reps: "2 min" },
+      { name: "Pec Self Release", video: "https://www.youtube.com/watch?v=iilB9Oy-WHc", instruction: "As needed.", weight: "", reps: "1-2 min" },
+      { name: "Upper Trap Self Release", video: "https://www.youtube.com/watch?v=q2hxWMkcrr8", instruction: "As needed.", weight: "", reps: "2 min" },
+      { name: "Pec Stretch", video: "https://www.youtube.com/watch?v=ui02XoM99Ug", instruction: "", weight: "", reps: "3x45" },
+      { name: "Lat Stretch", video: "https://www.youtube.com/watch?v=csyBzUpqtv8", instruction: "", weight: "", reps: "3x45" },
+      { name: "Prone Scap Series", video: "https://www.youtube.com/watch?v=HHFdsA-jo-Q", instruction: "Focus on \"A\" - shoulder blade leads movement, in pocket, away from ear.", weight: "0 lbs", reps: "10x10 sec hold" }
     ];
 
     function extractYouTubeId(url){ try{const u=new URL(url);if(u.hostname.includes('youtu.be'))return u.pathname.slice(1);if(u.searchParams.has('v'))return u.searchParams.get('v');const p=u.pathname.split('/').filter(Boolean);const i=p.findIndex(x=>['embed','shorts','live'].includes(x));if(i!==-1&&p[i+1])return p[i+1];return p.pop();}catch{return url;}}
     function embedUrl(yid){return `https://www.youtube-nocookie.com/embed/${yid}?rel=0&modestbranding=1&playsinline=1`;}
 
-    const funStuffListEl=document.getElementById('funstuff-list');
-    const warmupListEl=document.getElementById('warmup-list');
-    const exercisesListEl=document.getElementById('exercises-list');
+    const tier1ListEl=document.getElementById('tier1-list');
+    const tier2ListEl=document.getElementById('tier2-list');
+    const tier3ListEl=document.getElementById('tier3-list');
     const todayPill=document.getElementById('today-pill');
 
     const todayKey=()=>{const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
@@ -164,23 +175,22 @@
         card.innerHTML=`${videoHtml}<div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}${w.reps?`<span class='badge'>Reps: ${w.reps}</span>`:''}</div>${w.instruction?`<div class='instruction'>${w.instruction}</div>`:''}<div class='actions'><div class='checkbox' data-id='${globalIndex}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
         containerEl.appendChild(card);
       });
-      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=funStuff.length+warmup.length+exercises.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
+      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=tier1.length+tier2.length+tier3.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
     }
 
     function render(){
       const completed=loadCompleted();
-      const totalItems=funStuff.length+warmup.length+exercises.length;
+      const totalItems=tier1.length+tier2.length+tier3.length;
       todayPill.textContent=`Today: ${todayKey()} • ${completed.size}/${totalItems} done`;
-      renderSection(funStuff, funStuffListEl, 0);
-      renderSection(warmup, warmupListEl, funStuff.length);
-      renderSection(exercises, exercisesListEl, funStuff.length+warmup.length);
+      renderSection(tier1, tier1ListEl, 0);
+      renderSection(tier2, tier2ListEl, tier1.length);
+      renderSection(tier3, tier3ListEl, tier1.length+tier2.length);
     }
 
     document.getElementById('reset-today').onclick=()=>{localStorage.removeItem(storageKey());render();};
-    document.getElementById('mark-all').onclick=()=>{const totalItems=funStuff.length+warmup.length+exercises.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
+    document.getElementById('mark-all').onclick=()=>{const totalItems=tier1.length+tier2.length+tier3.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
 
     render();
   </script>
 </body>
 </html>
-
