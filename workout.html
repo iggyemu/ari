@@ -97,6 +97,11 @@
   </section>
 
   <section class="workout-section">
+    <h2 class="section-title">⛳ Golf Warmup</h2>
+    <div class="workout-grid" id="golf-warmup-list"></div>
+  </section>
+
+  <section class="workout-section">
     <h2 class="section-title">💪 Tier 1 Priority</h2>
     <div class="workout-grid" id="tier1-list"></div>
   </section>
@@ -116,6 +121,14 @@
   </footer>
 
   <script>
+    const golfWarmup = [
+      { name: "Star Drill", video: "https://www.youtube.com/watch?v=Z0HOjuh8UpU", instruction: "Lateral only.", weight: "", reps: "3x10 each side" },
+      { name: "Paloff Press Squat and Lunge Positions", video: "https://www.youtube.com/watch?v=HkDj3qSmO4Y", instruction: "Squat position - facing both directions!", weight: "", reps: "2x10x5 sec" },
+      { name: "Lateral Step Down (Twist)", video: "https://www.youtube.com/watch?v=jMh-ou8tHxM", instruction: "", weight: "", reps: "2x10 (each leg)" },
+      { name: "Monster Walks", video: "", instruction: "", weight: "", reps: "3 side to side and 3 forward" },
+      { name: "Row with External Rotator Cuff Activation", video: "https://www.youtube.com/watch?v=uUZQc9-Sxnw", instruction: "Without band around wrist for now.", weight: "", reps: "3x10" },
+    ];
+
     const tier1 = [
       { name: "Star Drill", video: "https://www.youtube.com/watch?v=Z0HOjuh8UpU", instruction: "Lateral only.", weight: "", reps: "3x10 each side" },
       { name: "Paloff Press Squat and Lunge Positions", video: "https://www.youtube.com/watch?v=HkDj3qSmO4Y", instruction: "Squat position - facing both directions!", weight: "", reps: "2x10x5 sec" },
@@ -152,6 +165,7 @@
     function extractYouTubeId(url){ try{const u=new URL(url);if(u.hostname.includes('youtu.be'))return u.pathname.slice(1);if(u.searchParams.has('v'))return u.searchParams.get('v');const p=u.pathname.split('/').filter(Boolean);const i=p.findIndex(x=>['embed','shorts','live'].includes(x));if(i!==-1&&p[i+1])return p[i+1];return p.pop();}catch{return url;}}
     function embedUrl(yid){return `https://www.youtube-nocookie.com/embed/${yid}?rel=0&modestbranding=1&playsinline=1`;}
 
+    const golfWarmupListEl=document.getElementById('golf-warmup-list');
     const tier1ListEl=document.getElementById('tier1-list');
     const tier2ListEl=document.getElementById('tier2-list');
     const tier3ListEl=document.getElementById('tier3-list');
@@ -175,20 +189,21 @@
         card.innerHTML=`${videoHtml}<div class='card-body'><div class='name'>${w.name}</div><div class='meta'>${w.weight?`<span class='badge'>Weight: ${w.weight}</span>`:''}${w.reps?`<span class='badge'>Reps: ${w.reps}</span>`:''}</div>${w.instruction?`<div class='instruction'>${w.instruction}</div>`:''}<div class='actions'><div class='checkbox' data-id='${globalIndex}' data-checked='${done}' aria-checked='${done}'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></div><span class='done'>${done?'Completed today':''}</span></div></div>`;
         containerEl.appendChild(card);
       });
-      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=tier1.length+tier2.length+tier3.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
+      containerEl.querySelectorAll('.checkbox').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;const s=loadCompleted();const totalItems=golfWarmup.length+tier1.length+tier2.length+tier3.length;if(b.dataset.checked==='true'){s.delete(id);b.dataset.checked='false';b.nextElementSibling.textContent='';}else{s.add(id);b.dataset.checked='true';b.nextElementSibling.textContent='Completed today';}saveCompleted(s);todayPill.textContent=`Today: ${todayKey()} • ${s.size}/${totalItems} done`;}));
     }
 
     function render(){
       const completed=loadCompleted();
-      const totalItems=tier1.length+tier2.length+tier3.length;
+      const totalItems=golfWarmup.length+tier1.length+tier2.length+tier3.length;
       todayPill.textContent=`Today: ${todayKey()} • ${completed.size}/${totalItems} done`;
-      renderSection(tier1, tier1ListEl, 0);
-      renderSection(tier2, tier2ListEl, tier1.length);
-      renderSection(tier3, tier3ListEl, tier1.length+tier2.length);
+      renderSection(golfWarmup, golfWarmupListEl, 0);
+      renderSection(tier1, tier1ListEl, golfWarmup.length);
+      renderSection(tier2, tier2ListEl, golfWarmup.length+tier1.length);
+      renderSection(tier3, tier3ListEl, golfWarmup.length+tier1.length+tier2.length);
     }
 
     document.getElementById('reset-today').onclick=()=>{localStorage.removeItem(storageKey());render();};
-    document.getElementById('mark-all').onclick=()=>{const totalItems=tier1.length+tier2.length+tier3.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
+    document.getElementById('mark-all').onclick=()=>{const totalItems=golfWarmup.length+tier1.length+tier2.length+tier3.length;const s=new Set([...Array(totalItems).keys()].map(i=>String(i)));saveCompleted(s);render();};
 
     render();
   </script>
