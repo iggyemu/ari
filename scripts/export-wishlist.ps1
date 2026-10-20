@@ -11,6 +11,7 @@ param(
     [switch]$SkipPowerPoint
 )
 $ErrorActionPreference = 'Stop'
+$slideSeconds = 5
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $sourcePath = Join-Path $projectRoot 'dependencies\wishlist 2026 ari.pptx'
 $buildPath = Join-Path $projectRoot '.wishlist-build'
@@ -60,7 +61,7 @@ if (-not $SkipPowerPoint) {
             $slide = $deck.Slides.Item($i)
             $slide.SlideShowTransition.AdvanceOnClick = 0
             $slide.SlideShowTransition.AdvanceOnTime = -1
-            $slide.SlideShowTransition.AdvanceTime = 8
+            $slide.SlideShowTransition.AdvanceTime = [single]$slideSeconds
         }
         $deck.SlideShowSettings.AdvanceMode = 2 # ppSlideShowUseSlideTimings
         $instruction = $deck.Slides.Item(34).Shapes.Item('Title 1').TextFrame.TextRange.Find(
@@ -91,7 +92,7 @@ if (-not $SkipPowerPoint) {
         [void](Add-Animation $sequence $wave 1 3 0.01)
         [void](Add-Animation $sequence $wave 83 2 $waveSeconds)
         [void](Add-Animation $sequence $thanks 10 3 0.5)
-        $closing.SlideShowTransition.AdvanceTime = $golfSeconds + $waveSeconds + 3
+        $closing.SlideShowTransition.AdvanceTime = [single]($golfSeconds + $waveSeconds + 3)
         if ($EndingPreview) {
             for ($i = 34; $i -ge 1; $i--) { $deck.Slides.Item($i).Delete() }
         } else {
@@ -99,7 +100,7 @@ if (-not $SkipPowerPoint) {
         }
         $deck.Save()
         Write-Output 'Exporting with PowerPoint at 1080p / 30 fps...'
-        $deck.CreateVideo($rawPath, $true, 8, 1080, 30, 85)
+        $deck.CreateVideo($rawPath, $true, $slideSeconds, 1080, 30, 85)
         $timer = [Diagnostics.Stopwatch]::StartNew()
         # ppMediaTaskStatus: none=0, inProgress=1, queued=2, done=3, failed=4.
         do {

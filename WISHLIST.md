@@ -1,6 +1,6 @@
 # Ari’s 2026 holiday wishlist
 
-The shareable page will be **https://iggyemu.github.io/ari/wishlist.html** after you deploy it.
+The shareable page is **https://iggyemu.github.io/ari/wishlist.html**.
 It is a static HTML page: no application server, build step, or JavaScript is required for visitors.
 
 ## Publish to your existing GitHub Pages site
@@ -86,7 +86,7 @@ When the tools are already in PATH or under `.wishlist-build/`, simply run:
 ```
 
 PowerPoint operates on `.wishlist-build/wishlist-export-copy.pptx`. The original is never saved,
-and its SHA-256 is checked after export. Slides 1–34 have an eight-second reading interval, with
+and its SHA-256 is checked after export. Slides 1–34 have a five-second reading interval, with
 their existing transitions retained. The closing sequence plays the golf clip once, reveals
 and plays the wave clip once in its original position, then fades in the existing thank-you text.
 The wave is brought above the golf background so it can be seen. Existing mute settings are preserved;
@@ -114,7 +114,7 @@ The page styling can be edited directly; the gift-list generator preserves every
 
 ## Validation
 
-The delivered MP4 is **5:56.33**, **27.4 MiB**, H.264 / `yuv420p`, **1920 × 1080 at 30 fps**,
+The delivered MP4 is **4:14.23**, **26.0 MiB**, H.264 / `yuv420p`, **1920 × 1080 at 30 fps**,
 with fast-start metadata and no audio track. Every frame decoded successfully, and video samples
 cover all 35 slides in order plus the automatic closing sequence.
 
@@ -138,5 +138,5 @@ Test the page at desktop and narrow mobile widths with keyboard navigation and J
 The native player has no autoplay, uses inline playback on phones, and preloads only metadata.
 The direct MP4 and original PowerPoint links remain visible if embedded playback fails.
 
-The deliverables are prepared locally. Publication and the checks against the live GitHub Pages URL
-are the deployment owner’s final steps.
+The page is published through the repository’s existing Pages pipeline. Repeat the live checks
+above after future updates. The video links use a version query to refresh cached playback files.
