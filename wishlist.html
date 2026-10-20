@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ari’s 2026 Holiday Wishlist</title>
+  <meta name="description" content="Watch Ari’s holiday wishlist, browse her gift links, or download her original PowerPoint.">
+  <meta property="og:title" content="Ari’s 2026 Holiday Wishlist">
+  <meta property="og:description" content="A little holiday inspiration, made by Ari. Watch the presentation and explore her gift links.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iggyemu.github.io/ari/wishlist.html">
+  <meta property="og:image" content="https://iggyemu.github.io/ari/assets/wishlist-2026/poster.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="The opening slide of Ari’s 2026 Wishlist, with a pastel rainbow background.">
+  <meta name="theme-color" content="#fff1f7">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #263345;
+      --muted: #596579;
+      --pink: #a72d70;
+      --blue: #275b9b;
+      --border: #eadce9;
+      --radius: 1.4rem;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      background:
+        radial-gradient(ellipse at 0 0, #f3ffe7 0, transparent 36rem),
+        radial-gradient(ellipse at 100% 6rem, #e8f3ff 0, transparent 40rem),
+        linear-gradient(160deg, #fff7fb, #fff 65%, #fff1f7);
+    }
+    a { color: var(--blue); text-underline-offset: .2em; }
+    a:hover { color: var(--pink); }
+    a:focus-visible, video:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 5px;
+    }
+    .skip-link { position: absolute; left: 1rem; top: -6rem; padding: .7rem; background: #fff; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .page { max-width: 1060px; margin: 0 auto; padding: 0 1.25rem; }
+    header { padding: 3.5rem 0 2rem; text-align: center; }
+    .eyebrow { margin: 0 0 .7rem; color: var(--pink); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2 { font-family: "Fredoka", "Poppins", system-ui, sans-serif; font-weight: 500; line-height: 1.15; }
+    h1 { margin: 0 auto 1rem; max-width: 900px; font-size: clamp(2.3rem, 5vw, 3.6rem); letter-spacing: -.025em; }
+    h1 span { color: var(--pink); }
+    .intro { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 1rem; }
+    .presentation { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 14px 45px #7cafff24, 0 6px 20px #ff7ac818; }
+    video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #18212c; object-fit: contain; }
+    .player-caption { padding: 1.15rem 1.5rem 1.4rem; }
+    .watch-note { margin: 0 0 1rem; font-size: .92rem; color: var(--muted); }
+    .downloads { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.3rem; }
+    .download-button {
+      display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .3rem .75rem;
+      padding: .75rem 1.1rem; border: 1px solid #e4b6d1; border-radius: .9rem;
+      background: #fff1f8; color: #86265a; font-weight: 600; text-decoration: none;
+    }
+    .download-button:hover { background: #ffe3f1; }
+    .download-button small { font-weight: 400; white-space: nowrap; }
+    .video-link { font-size: .9rem; padding: .5rem 0; }
+    .shopping { padding: 3.2rem 0 1rem; }
+    h2 { font-size: 2rem; margin: 0 0 .6rem; }
+    .shopping-intro { margin: 0; color: var(--muted); max-width: 760px; font-size: .95rem; }
+    .category-nav { display: flex; flex-wrap: wrap; gap: .65rem; margin: 1.35rem 0 2rem; }
+    .category-nav a { padding: .55rem 1rem; border: 1px solid var(--border); border-radius: 999px; text-decoration: none; background: #fff; font-weight: 500; }
+    .gift-section { margin: 0 0 2rem; scroll-margin-top: 1.5rem; }
+    .category-heading { display: flex; align-items: baseline; gap: .8rem; padding: .4rem 0 1rem; border-bottom: 2px solid var(--border); }
+    .category-heading h3 { margin: 0; font-family: "Fredoka", system-ui, sans-serif; font-weight: 500; font-size: 1.65rem; }
+    .category-heading span { color: var(--muted); font-size: .82rem; }
+    .gift-list { list-style: none; margin: 0; padding: 0; }
+    .gift {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 14rem);
+      align-items: center; column-gap: 2rem; padding: 1.1rem .25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .gift h4 { margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+    .gift-size { margin: .35rem 0 0; font-size: .88rem; line-height: 1.5; }
+    .slide-number { margin: .25rem 0 0; color: var(--muted); font-size: .78rem; }
+    .retailer { font-size: .88rem; line-height: 1.5; }
+    .retailer a { display: inline-block; padding: .4rem 0; }
+    .missing-link { display: block; color: var(--muted); font-size: .78rem; margin-top: .2rem; }
+    footer { padding: 0 0 2.5rem; color: var(--muted); text-align: center; font-size: .85rem; }
+    @media (max-width: 600px) {
+      .page { padding: 0 1rem; }
+      header { padding: 2.5rem 0 1.5rem; }
+      .player-caption { padding: 1rem; }
+      .downloads { align-items: stretch; flex-direction: column; gap: .55rem; }
+      .video-link { text-align: center; }
+      .gift { grid-template-columns: 1fr; row-gap: .45rem; padding: 1rem 0; }
+      .retailer { font-size: .9rem; }
+      .shopping { padding-top: 2.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#wishlist-video">Skip to the wishlist</a>
+  <div class="page">
+    <header>
+      <p class="eyebrow">For family &amp; friends · 2026</p>
+      <h1>Ari’s 2026 <span>Holiday Wishlist</span></h1>
+      <p class="intro">A little holiday inspiration, made by Ari. Watch her presentation, then explore the gift links below.</p>
+    </header>
+    <main>
+      <section class="presentation" aria-label="Wishlist presentation">
+        <video id="wishlist-video" controls playsinline preload="metadata" width="1920" height="1080"
+          poster="assets/wishlist-2026/poster.jpg" aria-label="Ari’s 2026 Holiday Wishlist presentation"
+          aria-describedby="watch-note">
+          <source src="assets/wishlist-2026/video.mp4" type="video/mp4">
+          Your browser cannot play this video. <a href="assets/wishlist-2026/video.mp4">Open the MP4</a>
+          or <a href="dependencies/wishlist%202026%20ari.pptx">download the original PowerPoint</a>.
+        </video>
+        <div class="player-caption">
+          <p class="watch-note" id="watch-note">Press play to watch. Pause any time to read a slide, or use fullscreen for a closer look.</p>
+          <div class="downloads">
+            <a class="download-button" href="dependencies/wishlist%202026%20ari.pptx" download="wishlist 2026 ari.pptx">
+              Download original PowerPoint <small>PPTX · about 36 MiB</small>
+            </a>
+            <a class="video-link" href="assets/wishlist-2026/video.mp4">Open the MP4 directly</a>
+          </div>
+        </div>
+      </section>
+      <section class="shopping" aria-labelledby="gift-links-title">
+        <h2 id="gift-links-title">Explore the gift links</h2>
+        <p class="shopping-intro">These are the products and links from Ari’s slides. Some items only name a store; those are included here too. Product links open in a new tab.</p>
+        <nav class="category-nav" aria-label="Gift categories">
+          <a href="#clothes">Clothes</a>
+          <a href="#items">Items</a>
+          <a href="#golf">Golf</a>
+        </nav>
+        <!-- BEGIN GENERATED GIFTS -->
+        <section class="gift-section" id="clothes" aria-labelledby="clothes-heading">
+          <div class="category-heading"><h3 id="clothes-heading">Clothes</h3><span>15 gift ideas</span></div>
+          <ul class="gift-list">
+            <li class="gift" data-slide="4">
+              <div><h4>Ashlyn striped top</h4><p class="gift-size"><strong>Size:</strong> XXS</p><p class="slide-number">Slide 4</p></div>
+              <div class="retailer"><a href="https://us.brandymelville.com/products/ashlyn-striped-top-3" target="_blank" rel="noopener noreferrer">Shop at Brandy Melville <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="5">
+              <div><h4>Hollister Feel Good Oversized Dot Hoodie</h4><p class="gift-size"><strong>Size:</strong> XXS</p><p class="slide-number">Slide 5</p></div>
+              <div class="retailer"><a href="https://www.hollisterco.com/shop/us/p/oversized-butterfly-graphic-hoodie-61735320?categoryId=614330491&amp;faceout=model&amp;seq=36&amp;afsource=social+proofing&amp;gridProductPosition=21" target="_blank" rel="noopener noreferrer">Shop at Hollister <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="6">
+              <div><h4>Hollister Feel Good Classic Fit Raglan Hoodie</h4><p class="gift-size"><strong>Size:</strong> XXS</p><p class="slide-number">Slide 6</p></div>
+              <div class="retailer"><a href="https://www.hollisterco.com/shop/us/p/hollister-feel-good-classic-fit-raglan-hoodie-63729321?categoryId=614330491&amp;faceout=model&amp;seq=01&amp;gridProductPosition=77" target="_blank" rel="noopener noreferrer">Shop at Hollister <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="7">
+              <div><h4>Hollister Feel Good California Graphic Bootcut Sweatpants</h4><p class="gift-size"><strong>Size:</strong> XXS length: regular</p><p class="slide-number">Slide 7</p></div>
+              <div class="retailer"><a href="https://www.hollisterco.com/shop/us/p/hollister-feel-good-low-rise-baggy-sweatpants-63157828?categoryId=614330491&amp;faceout=model&amp;seq=11&amp;gridProductPosition=22" target="_blank" rel="noopener noreferrer">Shop at Hollister <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="8">
+              <div><h4>PAUL FRANK Julius Head Unisex Tee</h4><p class="slide-number">Slide 8</p></div>
+              <div class="retailer"><a href="https://www.tillys.com/product/paul-frank-julius-head-unisex-tee/530803215.html?utm_source=Pinterest&amp;utm_medium=organic&amp;epik=dj0yJnU9akRtQXZHb25JZXhETGg2eVVKUGYwS3RxYXRtMktrcHImcD0wJm49ZHNSc1Z3R3ZVM2pZdE90S1ViN0xWdyZ0PUFBQUFBR3JWRVFn" target="_blank" rel="noopener noreferrer">Shop at Tillys <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="9">
+              <div><h4>PAUL FRANK Julius Beanie Unisex Tee</h4><p class="slide-number">Slide 9</p></div>
+              <div class="retailer"><a href="https://www.tillys.com/product/paul-frank-julius-beanie-unisex-tee/455146501.html?utm_source=Pinterest&amp;utm_medium=organic&amp;epik=dj0yJnU9eEF1VHRRMk5VZlBTRGNVSDRzRjJPeEJUZnlQOUZvNjAmcD0wJm49UXhhLXZ3ZGZqVEo0NFFoUHdIUWpTdyZ0PUFBQUFBR3JWRWpB" target="_blank" rel="noopener noreferrer">Shop at Tillys <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="10">
+              <div><h4>Women&#x27;s Nuggets 1.5&quot; Split Shorts</h4><p class="gift-size"><strong>Size:</strong> XXS</p><p class="slide-number">Slide 10</p></div>
+              <div class="retailer"><a href="https://www.chicknlegs.com/products/womens-pink-polka-dot-1-5-split-shorts?variant=47431976026368" target="_blank" rel="noopener noreferrer">Shop at ChicknLegs <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="11">
+              <div><h4>Women&#x27;s Nuggets 1.5&quot; Split Shorts</h4><p class="gift-size"><strong>Size:</strong> XXS</p><p class="slide-number">Slide 11</p></div>
+              <div class="retailer"><a href="https://www.chicknlegs.com/products/chicknlegs-donuts-1-5-run?variant=43365343723776" target="_blank" rel="noopener noreferrer">Shop at ChicknLegs <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="12">
+              <div><h4>Women&#x27;s Lowmel</h4><p class="gift-size"><strong>Size:</strong> Women&#x27;s 5.5</p><p class="slide-number">Slide 12</p></div>
+              <div class="retailer"><a href="https://www.ugg.com/women-casuals-sneakers/lowmel/1144032.html?dwvar_1144032_color=SAN" target="_blank" rel="noopener noreferrer">Shop at UGG <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="13">
+              <div><h4>Women&#x27;s Classic Ultra Mini</h4><p class="gift-size"><strong>Size:</strong> Women&#x27;s 5.5</p><p class="slide-number">Slide 13</p></div>
+              <div class="retailer">UGG<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="14">
+              <div><h4>Women&#x27;s Momentum Low-Top Sneakers White Lace</h4><p class="gift-size"><strong>Size:</strong> Women&#x27;s 5.5</p><p class="slide-number">Slide 14</p></div>
+              <div class="retailer"><a href="https://www.stevemadden.com/products/momentum-white-lace?variant=41571985817733" target="_blank" rel="noopener noreferrer">Shop at Steve Madden <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="15">
+              <div><h4>Enamel Pisa Custom Bracelet - Multi</h4><p class="slide-number">Slide 15</p></div>
+              <div class="retailer"><a href="https://www.baublebar.com/products/custom-pisa-bracelet-rainbow-enamel?variant=39687533953108" target="_blank" rel="noopener noreferrer">Shop at BaubleBar <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="15">
+              <div><h4>EMBRACE AMBITION BRACELET</h4><p class="slide-number">Slide 15</p></div>
+              <div class="retailer">Tory Burch<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="15">
+              <div><h4>Gold Angel Wings Pendant Necklace</h4><p class="slide-number">Slide 15</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="15">
+              <div><h4>VS Angel Nameplate Necklace</h4><p class="slide-number">Slide 15</p></div>
+              <div class="retailer"><a href="https://www.victoriassecret.com/us/vs/accessories-catalog/1129010400?genericId=11290104&amp;choice=6H58&amp;utm_campaign=626759089078&amp;utm_medium=PaidSocial&amp;utm_source=Pinterest&amp;utm_content=2680091027850&amp;pp=1" target="_blank" rel="noopener noreferrer">Shop at Victoria’s Secret <span aria-hidden="true">↗</span></a></div>
+            </li>
+          </ul>
+        </section>
+        <section class="gift-section" id="items" aria-labelledby="items-heading">
+          <div class="category-heading"><h3 id="items-heading">Items</h3><span>10 gift ideas</span></div>
+          <ul class="gift-list">
+            <li class="gift" data-slide="17">
+              <div><h4>Adopt Me! Neon Unicorn Light-Up Plush - Soft and Cuddly - Three Light-Up Modes - Toys for Kids</h4><p class="slide-number">Slide 17</p></div>
+              <div class="retailer"><a href="https://www.walmart.com/ip/Adopt-Me-Neon-Unicorn-Light-Up-Plush-Soft-and-Cuddly-Three-Light-Up-Modes-Toys-for-Kids/1994804582" target="_blank" rel="noopener noreferrer">Shop at Walmart <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="18">
+              <div><h4>HUAHUU Vanity Desk with Mirror and Lights, Makeup Vanity Desk with Lights 3 Colors, Transparent Top Vanity with 2 RGB Drawers, 6 Shelves, Large Tempered Cabinet, Power Outlet, for Bedroom, White</h4><p class="slide-number">Slide 18</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="19">
+              <div><h4>Sweetcrispy Vanity Stool Chair with Storage, Ottoman Faux Fur Soft Padded Makeup Footstools Seat with 4 Metal Legs Anti-Slip Adjustable Feet Modern Cute Small Footrest for Home Entryway Bedroom White</h4><p class="slide-number">Slide 19</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="20">
+              <div><h4>REEF LIFE</h4><p class="slide-number">Slide 20</p></div>
+              <div class="retailer"><a href="https://www.freestyleusa.com/products/shark-mini-clip-reef-life" target="_blank" rel="noopener noreferrer">Shop at Freestyle <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="21">
+              <div><h4>Polly Pocket™ Kids Self-Care Set</h4><p class="slide-number">Slide 21</p></div>
+              <div class="retailer"><a href="https://www.ever-eden.com/products/polly-pocket-kids-self-care-set" target="_blank" rel="noopener noreferrer">Shop at Evereden <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="22">
+              <div><h4>Hatch Restore 3 | Science-Backed Sleep Audio, Circadian Lighting (Putty)</h4><p class="slide-number">Slide 22</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="23">
+              <div><h4>LEGO Minifigure Unicorn Girl 17&quot; Plush Character</h4><p class="slide-number">Slide 23</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="24">
+              <div><h4>Lego Minifigure Butterfly Girl with Flowers 12&quot; Plush Character</h4><p class="slide-number">Slide 24</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="25">
+              <div><h4>Fruit Punch</h4><p class="gift-size"><strong>Size:</strong> 40oz</p><p class="slide-number">Slide 25</p></div>
+              <div class="retailer"><a href="https://www.thehydrojug.com/products/fruit-punch-40oz-sport" target="_blank" rel="noopener noreferrer">Shop at HydroJug <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="26">
+              <div><h4>LULUCOLORS 18Pcs Candy‑Colored and Soft Touch Makeup Brush Set</h4><p class="slide-number">Slide 26</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+          </ul>
+        </section>
+        <section class="gift-section" id="golf" aria-labelledby="golf-heading">
+          <div class="category-heading"><h3 id="golf-heading">Golf</h3><span>8 gift ideas</span></div>
+          <ul class="gift-list">
+            <li class="gift" data-slide="28">
+              <div><h4>Girls Perth Performance Quarter-Zip</h4><p class="gift-size"><strong>Size:</strong> Large</p><p class="slide-number">Slide 28</p></div>
+              <div class="retailer"><a href="https://www.petermillar.com/p/girls-perth-performance-quarter-zip/ygf26ek40_OCNAR.html?dwvar_ygf26ek40_color=OCNAR" target="_blank" rel="noopener noreferrer">Shop at Peter Millar <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="28">
+              <div><h4>M MAELREG Boys Golf Pants Stretch Flat Front Dress Athletic Casual Youth Golf Pants School Uniform Pants with Mesh</h4><p class="gift-size"><strong>Size:</strong> 10-11</p><p class="slide-number">Slide 28</p></div>
+              <div class="retailer"><a href="https://www.amazon.com/MAELREG-Uniform-Pants-Performance-Resistant/dp/B0GF24SGBJ/ref=sr_1_5?crid=10772O64PLDIQ&amp;dib=eyJ2IjoiMSJ9.Qh-BsGZFzTbGRvza_YdQJynVh2Y6B_dvhHmtZWqYjZk0iJxETA9xeOjCBmgAIEf2S8912pynC15YbVAibYuTi6XOeK_o2OKJHUZleOKP647VOcBodUCMKMQDxkPr72xTQIS6t31AXKJz1w4ubU-SsP90Xly2ZDXFYyg336XgGyzcFd3auUT9OXeFzfeVK8Lny-IBi4gEUsaaYmtcQ7SCt9gG0jafQeMk4je4S-hqen2JR5Z4_6W8RD_pL7Avge11JKbchEIDkq2nIvZmxFYcPPizduhr7m-rJQhGOQtW7XY.7M8zICkQhtC4RiKxXwRZahnoWMz2RG5tXUwpddFzNrQ&amp;dib_tag=se&amp;keywords=golf%2Bwhite%2Bpants%2Bgirls&amp;qid=1789995327&amp;s=sporting-goods&amp;sprefix=golf%2Bwhite%2Bpants%2Bgirls%2Csporting%2C158&amp;sr=1-5&amp;th=1&amp;psc=1" target="_blank" rel="noopener noreferrer">Shop at Amazon <span aria-hidden="true">↗</span></a></div>
+            </li>
+            <li class="gift" data-slide="29">
+              <div><h4>Nike Victory Pro 4</h4><p class="gift-size"><strong>Size:</strong> Men 4 /Women&#x27;s 5.5</p><p class="slide-number">Slide 29</p></div>
+              <div class="retailer">Nike<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="30">
+              <div><h4>Golf Club Covers Driver Head Covers Wood Cover Hybird Headcovers Set Leather Golf Accessories with Sof Lining</h4><p class="slide-number">Slide 30</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="31">
+              <div><h4>Craftsman Golf Airplane Send It 460cc Blue Driver Headcover Fairway Wood Hybrid Mallet Blade DF3 OZ.1 Putter Head Covers Alignment Stick Protector</h4><p class="slide-number">Slide 31</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="32">
+              <div><h4>Golf Club Head Cover Golf Head Cover Driver Headcover Fairway Wood Headcover Hybrid Club Head Cover</h4><p class="slide-number">Slide 32</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="33">
+              <div><h4>Craftsman Golf Pink Birdie Girly Style Golf Driver Headcover Mallet Blade Putter Covers OZ.1 MEZZ.1 MAX Gift for Women</h4><p class="slide-number">Slide 33</p></div>
+              <div class="retailer">Amazon<span class="missing-link">Product link not provided</span></div>
+            </li>
+            <li class="gift" data-slide="34">
+              <div><h4>TaylorMade Signature M4 Stand Bag</h4><p class="slide-number">Slide 34</p></div>
+              <div class="retailer">Amazon or TaylorMade<span class="missing-link">Product link not provided</span></div>
+            </li>
+          </ul>
+        </section>
+        <!-- END GENERATED GIFTS -->
+      </section>
+    </main>
+    <footer>Thank you for taking a look! <span aria-hidden="true">💖</span></footer>
+  </div>
+</body>
+</html>
