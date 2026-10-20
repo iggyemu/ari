@@ -10,8 +10,12 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "dependencies" / "wishlist 2026 ari.pptx"
 PAGE = ROOT / "wishlist.html"
-# Sizes supplied by the family for the webpage, without editing the source deck.
+# Gift details supplied by the family for the webpage, without editing the source deck.
 WEB_SIZE_OVERRIDES = {(4, "Ashlyn striped top"): "XXS"}
+WEB_COLOR_OVERRIDES = {
+    (29, "Nike Victory Pro 4"): "Summit White/Court Blue/Metallic Silver/Obsidian",
+    (34, "TaylorMade Signature M4 Stand Bag"): "Light Blue",
+}
 NS = {
     "p": "http://schemas.openxmlformats.org/presentationml/2006/main",
     "a": "http://schemas.openxmlformats.org/drawingml/2006/main",
@@ -175,9 +179,12 @@ def render(groups):
             size_value = WEB_SIZE_OVERRIDES.get((gift["slide"], gift["name"]), gift["size"])
             size = (f'<p class="gift-size"><strong>Size:</strong> {e(display_size(size_value))}</p>'
                     if size_value else "")
+            color_value = WEB_COLOR_OVERRIDES.get((gift["slide"], gift["name"]))
+            color = (f'<p class="gift-color"><strong>Color:</strong> {e(color_value)}</p>'
+                     if color_value else "")
             rows.append(
                 f'            <li class="gift" data-slide="{gift["slide"]}">\n'
-                f'              <div><h4>{e(gift["name"])}</h4>{size}'
+                f'              <div><h4>{e(gift["name"])}</h4>{size}{color}'
                 f'<p class="slide-number">Slide {gift["slide"]}</p></div>\n'
                 f'              <div class="retailer">{destination}</div>\n'
                 '            </li>')

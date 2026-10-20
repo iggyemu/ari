@@ -55,6 +55,8 @@ Sizes appear beneath the product names where supplied, preserving pant length.
 On the webpage, “xss” and “xxs” display as “XXS”, and “Women’s 5.5” and “Women 5.5”
 display as “Women's 5.5”. These display corrections do not change the original PowerPoint.
 The Ashlyn striped top (slide 4) displays the family-supplied size XXS on the webpage.
+Family-supplied colors also appear on the webpage: Light Blue for the TaylorMade golf bag,
+and Summit White/Court Blue/Metallic Silver/Obsidian for the Nike Victory Pro 4 shoes.
 
 There are 33 gift entries: 15 Clothes, 10 Items, and 8 Golf. Eighteen have a source product link;
 the remaining fifteen show the retailer and “Product link not provided.” Product wording and
