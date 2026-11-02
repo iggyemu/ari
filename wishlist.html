@@ -52,6 +52,7 @@
     h1 { margin: 0 auto 1rem; max-width: 900px; font-size: clamp(2.3rem, 5vw, 3.6rem); letter-spacing: -.025em; }
     h1 span { color: var(--pink); }
     .intro { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 1rem; }
+    .buying-note { margin: 1.1rem auto 0; max-width: 620px; padding: .75rem 1.1rem; border: 1px solid #e4b6d1; border-radius: .9rem; background: #fff1f8; font-size: .95rem; }
     .presentation { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 14px 45px #7cafff24, 0 6px 20px #ff7ac818; }
     video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #18212c; object-fit: contain; }
     .player-caption { padding: 1.15rem 1.5rem 1.4rem; }
@@ -83,6 +84,9 @@
     .gift h4 { margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
     .gift-size, .gift-color { margin: .35rem 0 0; font-size: .88rem; line-height: 1.5; }
     .slide-number { margin: .25rem 0 0; color: var(--muted); font-size: .78rem; }
+    .bought-badge { display: inline-block; margin: .35rem 0 0; padding: .1rem .65rem; border-radius: 999px; background: #e3f5ea; color: #1c6440; font-size: .8rem; font-weight: 600; }
+    .gift-bought h4 { color: var(--muted); text-decoration: line-through; }
+    .gift-bought .gift-size, .gift-bought .gift-color { color: var(--muted); }
     .retailer { font-size: .88rem; line-height: 1.5; }
     .retailer a { display: inline-block; padding: .4rem 0; }
     .missing-link { display: block; color: var(--muted); font-size: .78rem; margin-top: .2rem; }
@@ -107,6 +111,7 @@
       <p class="eyebrow">For family &amp; friends · 2026</p>
       <h1>Ari’s 2026 <span>Holiday Wishlist</span></h1>
       <p class="intro">A little holiday inspiration, made by Ari. Watch her presentation, then explore the gift links below.</p>
+      <p class="buying-note"><strong>Planning to buy a gift?</strong> The presentation shows Ari’s full list, so please check the <a href="#gift-links-title">gift links</a> first to see what’s already been bought.</p>
     </header>
     <main>
       <section class="presentation" aria-label="Wishlist presentation">
@@ -129,7 +134,7 @@
       </section>
       <section class="shopping" aria-labelledby="gift-links-title">
         <h2 id="gift-links-title">Explore the gift links</h2>
-        <p class="shopping-intro">These are the products and links from Ari’s slides. Some items only name a store; those are included here too. Product links open in a new tab.</p>
+        <p class="shopping-intro">These are the products and links from Ari’s slides. Some items only name a store; those are included here too. Product links open in a new tab. Gifts marked “Already bought” have been taken care of, so please pick something else.</p>
         <nav class="category-nav" aria-label="Gift categories">
           <a href="#clothes">Clothes</a>
           <a href="#items">Items</a>
@@ -137,7 +142,7 @@
         </nav>
         <!-- BEGIN GENERATED GIFTS -->
         <section class="gift-section" id="clothes" aria-labelledby="clothes-heading">
-          <div class="category-heading"><h3 id="clothes-heading">Clothes</h3><span>15 gift ideas</span></div>
+          <div class="category-heading"><h3 id="clothes-heading">Clothes</h3><span>15 gift ideas · 1 already bought</span></div>
           <ul class="gift-list">
             <li class="gift" data-slide="4">
               <div><h4>Ashlyn striped top</h4><p class="gift-size"><strong>Size:</strong> XXS</p><p class="slide-number">Slide 4</p></div>
@@ -183,8 +188,8 @@
               <div><h4>Women&#x27;s Momentum Low-Top Sneakers White Lace</h4><p class="gift-size"><strong>Size:</strong> Women&#x27;s 5.5</p><p class="slide-number">Slide 14</p></div>
               <div class="retailer"><a href="https://www.stevemadden.com/products/momentum-white-lace?variant=41571985817733" target="_blank" rel="noopener noreferrer">Shop at Steve Madden <span aria-hidden="true">↗</span></a></div>
             </li>
-            <li class="gift" data-slide="15">
-              <div><h4>Enamel Pisa Custom Bracelet - Multi</h4><p class="slide-number">Slide 15</p></div>
+            <li class="gift gift-bought" data-slide="15">
+              <div><h4>Enamel Pisa Custom Bracelet - Multi</h4><p class="bought-badge"><span aria-hidden="true">✓</span> Already bought</p><p class="slide-number">Slide 15</p></div>
               <div class="retailer"><a href="https://www.baublebar.com/products/custom-pisa-bracelet-rainbow-enamel?variant=39687533953108" target="_blank" rel="noopener noreferrer">Shop at BaubleBar <span aria-hidden="true">↗</span></a></div>
             </li>
             <li class="gift" data-slide="15">
@@ -202,7 +207,7 @@
           </ul>
         </section>
         <section class="gift-section" id="items" aria-labelledby="items-heading">
-          <div class="category-heading"><h3 id="items-heading">Items</h3><span>10 gift ideas</span></div>
+          <div class="category-heading"><h3 id="items-heading">Items</h3><span>10 gift ideas · 1 already bought</span></div>
           <ul class="gift-list">
             <li class="gift" data-slide="17">
               <div><h4>Adopt Me! Neon Unicorn Light-Up Plush - Soft and Cuddly - Three Light-Up Modes - Toys for Kids</h4><p class="slide-number">Slide 17</p></div>
@@ -220,8 +225,8 @@
               <div><h4>REEF LIFE</h4><p class="slide-number">Slide 20</p></div>
               <div class="retailer"><a href="https://www.freestyleusa.com/products/shark-mini-clip-reef-life" target="_blank" rel="noopener noreferrer">Shop at Freestyle <span aria-hidden="true">↗</span></a></div>
             </li>
-            <li class="gift" data-slide="21">
-              <div><h4>Polly Pocket™ Kids Self-Care Set</h4><p class="slide-number">Slide 21</p></div>
+            <li class="gift gift-bought" data-slide="21">
+              <div><h4>Polly Pocket™ Kids Self-Care Set</h4><p class="bought-badge"><span aria-hidden="true">✓</span> Already bought</p><p class="slide-number">Slide 21</p></div>
               <div class="retailer"><a href="https://www.ever-eden.com/products/polly-pocket-kids-self-care-set" target="_blank" rel="noopener noreferrer">Shop at Evereden <span aria-hidden="true">↗</span></a></div>
             </li>
             <li class="gift" data-slide="22">

@@ -16,6 +16,11 @@ WEB_COLOR_OVERRIDES = {
     (29, "Nike Victory Pro 4"): "Summit White/Court Blue/Metallic Silver/Obsidian",
     (34, "TaylorMade Signature M4 Stand Bag"): "Light Blue",
 }
+# Gifts already bought, as (slide, product name). They stay listed and are marked on the webpage.
+WEB_BOUGHT = {
+    (15, "Enamel Pisa Custom Bracelet - Multi"),
+    (21, "Polly Pocket™ Kids Self-Care Set"),
+}
 NS = {
     "p": "http://schemas.openxmlformats.org/presentationml/2006/main",
     "a": "http://schemas.openxmlformats.org/drawingml/2006/main",
@@ -161,10 +166,16 @@ def extract_products():
 
 
 def render(groups):
+    # Stop on a mistyped entry, rather than silently leaving a bought gift unmarked.
+    unmatched = WEB_BOUGHT - {(gift["slide"], gift["name"])
+                              for gifts in groups.values() for gift in gifts}
+    if unmatched:
+        raise ValueError(f"WEB_BOUGHT entries match no gift: {sorted(unmatched)}")
     sections = []
     for key, label in (("clothes", "Clothes"), ("items", "Items"), ("golf", "Golf")):
         gifts = groups[key]
         rows = []
+        bought_count = 0
         for gift in gifts:
             e = html.escape
             if gift["urls"]:
@@ -182,16 +193,22 @@ def render(groups):
             color_value = WEB_COLOR_OVERRIDES.get((gift["slide"], gift["name"]))
             color = (f'<p class="gift-color"><strong>Color:</strong> {e(color_value)}</p>'
                      if color_value else "")
+            bought = (gift["slide"], gift["name"]) in WEB_BOUGHT
+            bought_count += bought
+            row_class = "gift gift-bought" if bought else "gift"
+            badge = ('<p class="bought-badge"><span aria-hidden="true">✓</span> Already bought</p>'
+                     if bought else "")
             rows.append(
-                f'            <li class="gift" data-slide="{gift["slide"]}">\n'
-                f'              <div><h4>{e(gift["name"])}</h4>{size}{color}'
+                f'            <li class="{row_class}" data-slide="{gift["slide"]}">\n'
+                f'              <div><h4>{e(gift["name"])}</h4>{badge}{size}{color}'
                 f'<p class="slide-number">Slide {gift["slide"]}</p></div>\n'
                 f'              <div class="retailer">{destination}</div>\n'
                 '            </li>')
+        bought_label = f" · {bought_count} already bought" if bought_count else ""
         sections.append(
             f'        <section class="gift-section" id="{key}" aria-labelledby="{key}-heading">\n'
             f'          <div class="category-heading"><h3 id="{key}-heading">{label}</h3>'
-            f'<span>{len(gifts)} gift ideas</span></div>\n'
+            f'<span>{len(gifts)} gift ideas{bought_label}</span></div>\n'
             '          <ul class="gift-list">\n' + "\n".join(rows) +
             '\n          </ul>\n        </section>')
     return "\n".join(sections)

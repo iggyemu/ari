@@ -67,6 +67,23 @@ the intended product are not independently verified.
 If slides are added, removed, or reorganized, review the slide ranges and special table/shape
 mappings in the script before regenerating. Its source-count check stops if the count changes.
 
+## Mark a gift as bought
+
+Add the gift’s slide number and exact product name to `WEB_BOUGHT` in `scripts/build-wishlist.py`:
+
+```python
+WEB_BOUGHT = {
+    (12, "Women's Lowmel"),
+    (28, "Girls Perth Performance Quarter-Zip"),
+}
+```
+
+Then regenerate the gift list and publish `wishlist.html` as described above. Remove an entry to undo it.
+Bought gifts stay listed with an “Already bought” badge, and each category heading shows how many
+are bought. The script stops with an error if an entry does not match a gift on the list. The bought
+status lives in the page itself, so every visitor sees it once the Pages deployment finishes.
+The video always shows the full list, so a note at the top of the page points buyers to the gift links.
+
 ## Regenerate the video
 
 Requires Windows, installed desktop Microsoft PowerPoint, and FFmpeg plus FFprobe.
