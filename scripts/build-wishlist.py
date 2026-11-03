@@ -20,6 +20,7 @@ WEB_COLOR_OVERRIDES = {
 WEB_BOUGHT = {
     (15, "Enamel Pisa Custom Bracelet - Multi"),
     (21, "Polly Pocket™ Kids Self-Care Set"),
+    (29, "Nike Victory Pro 4"),
 }
 NS = {
     "p": "http://schemas.openxmlformats.org/presentationml/2006/main",
