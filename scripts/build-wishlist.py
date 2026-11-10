@@ -21,6 +21,7 @@ WEB_BOUGHT = {
     (15, "Enamel Pisa Custom Bracelet - Multi"),
     (21, "Polly Pocket™ Kids Self-Care Set"),
     (29, "Nike Victory Pro 4"),
+    (34, "TaylorMade Signature M4 Stand Bag"),
 }
 NS = {
     "p": "http://schemas.openxmlformats.org/presentationml/2006/main",
