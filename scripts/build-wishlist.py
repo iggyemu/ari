@@ -21,7 +21,9 @@ WEB_BOUGHT = {
     (15, "Enamel Pisa Custom Bracelet - Multi"),
     (21, "Polly Pocket™ Kids Self-Care Set"),
     (29, "Nike Victory Pro 4"),
+    (30, "Golf Club Covers Driver Head Covers Wood Cover Hybird Headcovers Set Leather Golf Accessories with Sof Lining"),
     (31, "Craftsman Golf Airplane Send It 460cc Blue Driver Headcover Fairway Wood Hybrid Mallet Blade DF3 OZ.1 Putter Head Covers Alignment Stick Protector"),
+    (32, "Golf Club Head Cover Golf Head Cover Driver Headcover Fairway Wood Headcover Hybrid Club Head Cover"),
     (33, "Craftsman Golf Pink Birdie Girly Style Golf Driver Headcover Mallet Blade Putter Covers OZ.1 MEZZ.1 MAX Gift for Women"),
     (34, "TaylorMade Signature M4 Stand Bag"),
 }
