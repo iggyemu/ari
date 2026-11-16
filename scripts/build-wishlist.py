@@ -18,6 +18,7 @@ WEB_COLOR_OVERRIDES = {
 }
 # Gifts already bought, as (slide, product name). They stay listed and are marked on the webpage.
 WEB_BOUGHT = {
+    (12, "Women's Lowmel"),
     (15, "Enamel Pisa Custom Bracelet - Multi"),
     (21, "Polly Pocket™ Kids Self-Care Set"),
     (29, "Nike Victory Pro 4"),
