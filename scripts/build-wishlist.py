@@ -20,6 +20,7 @@ WEB_COLOR_OVERRIDES = {
 WEB_BOUGHT = {
     (12, "Women's Lowmel"),
     (15, "Enamel Pisa Custom Bracelet - Multi"),
+    (18, "HUAHUU Vanity Desk with Mirror and Lights, Makeup Vanity Desk with Lights 3 Colors, Transparent Top Vanity with 2 RGB Drawers, 6 Shelves, Large Tempered Cabinet, Power Outlet, for Bedroom, White"),
     (21, "Polly Pocket™ Kids Self-Care Set"),
     (29, "Nike Victory Pro 4"),
     (30, "Golf Club Covers Driver Head Covers Wood Cover Hybird Headcovers Set Leather Golf Accessories with Sof Lining"),
